@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'size_config.dart';
-import 'package:weather_icons/weather_icons.dart';
+import 'package:flutte_app/size_config.dart';
 
 const kTempTextStyle = TextStyle(
   fontFamily: 'Spartan MB',
@@ -269,4 +268,5 @@ class _WeatherScreenState extends State<WeatherScreen> {
       );
     }
   }
+
 

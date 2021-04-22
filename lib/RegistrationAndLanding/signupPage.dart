@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutte_app/home.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -138,6 +140,11 @@ class _SignUpPageState extends State<SignUpPage> {
     if(email.isNotEmpty && password.isNotEmpty){
       _auth.createUserWithEmailAndPassword(
           email: email, password: password).then((user){
+            _db.collection("users").document(user.user.uid).setData({
+              "email" : email,
+              "data" : DateTime.now(),
+              // "signin_method" : user.user.email
+            });
         showDialog(
             context: context,
             builder: (ctx) {

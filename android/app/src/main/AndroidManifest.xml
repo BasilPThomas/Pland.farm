@@ -2,7 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.flutte_app">
     <uses-permission android:name="android.permission.INTERNET"/>
-   <application
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <application
         android:label="flutte_app"
        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">

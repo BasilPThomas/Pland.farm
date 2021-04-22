@@ -1,7 +1,7 @@
-import 'package:flutte_app/signupPage.dart';
+import 'package:flutte_app/RegistrationAndLanding/signupPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutte_app/otp.dart';
+import 'package:flutte_app/RegistrationAndLanding/otp.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutte_app/login.dart';
+import 'file:///C:/AndriodProject/flutte_app/lib/RegistrationAndLanding/login.dart';
 
 class Home extends StatefulWidget {
   @override
