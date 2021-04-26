@@ -435,19 +435,22 @@ class _WeatherScreenState extends State<WeatherScreen> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Column(
-      children: <Widget>[
-        Text(
-          '$temperature°c',
-          style:TextStyle(fontSize: 15),
-        ),
-        Text(
-          '$description',
-          style:TextStyle(fontSize: 15),),
-        Text("$cityName,india"
-          , style: TextStyle(fontSize: 20, fontWeight: FontWeight
-              .w500,),),
-      ],
+    return Container(
+      height:10,
+      child: Column(
+        children: <Widget>[
+          Text(
+            '$temperature°c',
+            style:TextStyle(fontSize: 15),
+          ),
+          Text(
+            '$description',
+            style:TextStyle(fontSize: 15),),
+          Text("$cityName,india"
+            , style: TextStyle(fontSize: 20, fontWeight: FontWeight
+                .w500,),),
+        ],
+      ),
     );
   }
 }

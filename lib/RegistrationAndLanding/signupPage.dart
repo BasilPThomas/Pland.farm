@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutte_app/home.dart';
+import 'package:flutte_app/homePage.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -155,7 +155,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   FlatButton(
                       onPressed:() {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Home()));
+                            builder: (context) => HomePage()));
                       },
                       child:  Text("Hey")),
                 ],

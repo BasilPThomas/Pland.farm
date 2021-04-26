@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutte_app/home.dart';
+import 'package:flutte_app/homePage.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 
 class OTPScreen extends StatefulWidget {
@@ -81,7 +81,7 @@ class _OTPScreenState extends State<OTPScreen> {
                               if (value.user != null) {
                                 Navigator.pushAndRemoveUntil(
                                     context,
-                                    MaterialPageRoute(builder: (context) => Home()),
+                                    MaterialPageRoute(builder: (context) => HomePage()),
                                     (route) => false);
                               }
                             });
@@ -118,7 +118,7 @@ class _OTPScreenState extends State<OTPScreen> {
               });
               Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => Home()),
+                  MaterialPageRoute(builder: (context) => HomePage()),
                   (route) => false);
             }
           });
