@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutte_app/homePage.dart';
+import 'package:flutte_app/HomePage/homePage.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {

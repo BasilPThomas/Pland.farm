@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'networking.dart';
-import 'weatherScreen.dart';
 import 'landingPage.dart';
 import 'location.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -36,7 +35,7 @@ class _WeatherPageState extends State<WeatherPage> {
     var weatherData = await network.getData();
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      // return OpeningLandingPage(locationWeather: weatherData,);
+      return OpeningLandingPage(locationWeather: weatherData,);
     }));
   }
   @override

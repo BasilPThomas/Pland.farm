@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutte_app/homePage.dart';
+import 'package:flutte_app/HomePage/homePage.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 
 class OTPScreen extends StatefulWidget {
