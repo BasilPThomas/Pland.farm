@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'file:///C:/AndriodProject/flutte_app/lib/RegistrationAndLanding/login.dart';
+// import 'file:///C:/AndriodProject/flutte_app/lib/RegistrationAndLanding/login.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -19,10 +19,10 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.logout),
             onPressed: () async {
               await FirebaseAuth.instance.signOut();
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
-                  (route) => false);
+              // Navigator.pushAndRemoveUntil(
+              //     context,
+              //     MaterialPageRoute(builder: (context) => LoginScreen()),
+              //     (route) => false);
             },
           )
         ],

@@ -1,11 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 // import 'package:flutte_app/video.dart';
-import 'package:flutte_app/RegistrationAndLanding/weatherPage.dart';
+import 'package:flutte_app/RegistrationAndLanding/models/weatherPage.dart';
 import 'package:flutter/material.dart';
-import 'RegistrationAndLanding/landingPage.dart';
-import 'RegistrationAndLanding/login.dart';
+import 'RegistrationAndLanding/Screens/landingPage.dart';
+// import 'RegistrationAndLanding/login.dart';
 import 'package:flutte_app/HomePage/homePage.dart';
 // import 'videoPlayer.dart';
+import 'sample.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,9 +22,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return OpeningLandingPage();
-    // return WeatherPage();
+    return WeatherPage();
     // return LoginScreen();
-    return HomePage();
+    // return HomePage();
+    // return App();
   }
 }
 
