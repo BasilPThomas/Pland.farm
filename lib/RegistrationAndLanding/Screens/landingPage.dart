@@ -1,0 +1,463 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'login.dart';
+import 'package:flutte_app/size_config.dart';
+import 'package:flutte_app/RegistrationAndLanding/models/videoPlayer.dart';
+import 'package:flutter/src/widgets/framework.dart';
+
+
+class OpeningLandingPage extends StatefulWidget {
+  OpeningLandingPage({this.locationWeather});
+  final locationWeather;
+  @override
+  _OpeningLandingPageState createState() => _OpeningLandingPageState();
+}
+
+class _OpeningLandingPageState extends State<OpeningLandingPage> {
+  double temperature;
+  String cityName;
+  String description;
+  @override
+  void initState() {
+    super.initState();
+    updateUI(widget.locationWeather);
+    // print(widget.locationWeather);
+  }
+
+  void updateUI(dynamic weatherData) {
+    temperature = weatherData['main']['temp'];
+    cityName = weatherData['name'];
+    description = weatherData['weather'][0]['description'];
+  }
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    return Scaffold(
+      body: Container(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Appbar(),
+              SizedBox( height:getProportionateScreenWidth(10),),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Hey , Sign In',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20),),
+                    Container(
+                      height:50,
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            '$temperature°c',
+                            style:TextStyle(fontSize: 20),
+                          ),
+                          Text(
+                            '$description',
+                            style:TextStyle(fontSize: 10),),
+                          Text("$cityName,india"
+                            , style: TextStyle(fontSize: 10, fontWeight: FontWeight
+                                .w500,),),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox( height:getProportionateScreenWidth(10),),
+              RoundImage(),
+              Video(),
+              Video1(),
+              SizedBox( height:getProportionateScreenWidth(8),),
+              Container(
+                width:MediaQuery.of(context).size.width ,
+                child:  Image(image: AssetImage("images/pland.jpeg") ,height: 70,fit: BoxFit.fill,),
+              ),
+              SizedBox( height:getProportionateScreenWidth(5),),
+              TrendingItem(),
+              SizedBox( height:getProportionateScreenWidth(5),),
+              LoadMore(),
+              SizedBox( height:getProportionateScreenWidth(5),),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Appbar extends StatefulWidget {
+  @override
+  _AppbarState createState() => _AppbarState();
+}
+
+class _AppbarState extends State<Appbar> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.black),),
+      height:getProportionateScreenWidth(45),
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.only(top: 50),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Image.asset("images/logo.jpeg", width: 97,height: 97,),
+          Icon(Icons.perm_contact_calendar_rounded,size: 35,),
+        ],),);
+  }
+}
+
+class SreachBar extends StatefulWidget {
+  @override
+  _SreachBarState createState() => _SreachBarState();
+}
+
+class _SreachBarState extends State<SreachBar> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 15),
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.black),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: TextField(
+        onChanged: (value) => print(value),
+        decoration: InputDecoration(
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            hintText: "What are you looking for ?",
+            prefixIcon: Icon(Icons.search,color: Colors.black,)),
+      ),);
+  }
+}
+
+class CirclePeople extends StatelessWidget {
+  final AssetImage peopleImage;
+  final String peopleName;
+
+  const CirclePeople({@required this.peopleImage, @required this.peopleName});
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric( vertical: 15.0,),
+          height: 80.0,
+          width: 80.0,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.fitHeight,
+              image: peopleImage,
+            ),
+            borderRadius: BorderRadius.circular(50.0),
+          ),
+        ),
+        Text(peopleName,style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
+      ],
+    );
+  }
+}
+
+
+class RoundImage extends StatefulWidget {
+  @override
+  _RoundImageState createState() => _RoundImageState();
+}
+
+class _RoundImageState extends State<RoundImage> {
+  @override
+  Widget build(BuildContext context) {
+    return  InkWell(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => LoginScreen()));
+        showDialog(
+            context: context,
+            builder: (BuildContext context){
+              return AlertDialog(
+                title: Text("Alert"),
+                content: Text('Please SignIN'),
+                actions: [
+                  FlatButton(
+                      onPressed:() {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => LoginScreen()));
+                      },
+                      child:  Text("login")),
+                ],
+              );
+            }
+        );
+      },
+      child: Container(
+        color: Colors.black12,
+        child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child:  Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                CirclePeople(
+                  peopleImage: AssetImage('images/seed.jpg'),
+                  peopleName: 'Seed',
+                ),
+                CirclePeople(
+                  peopleImage: AssetImage('images/fertilizer.jpg'),
+                  peopleName: 'Fertilizer',
+                ),
+                CirclePeople(
+                  peopleImage: AssetImage('images/rotavator.png'),
+                  peopleName: 'Machinery',
+                ),
+                CirclePeople(
+                  peopleImage:
+                  AssetImage('images/Tractor.jpg'),
+                  peopleName: 'Buy/Rent',
+                ),
+                CirclePeople(
+                  peopleImage:
+                  AssetImage('images/msp.jpeg'),
+                  peopleName: 'MSP Details',
+                ),
+              ],
+            )
+        ),
+      ),
+    );
+  }
+}
+
+class Video extends StatefulWidget {
+  @override
+  _VideoState createState() => _VideoState();
+}
+
+class _VideoState extends State<Video> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 5),
+      height: 200,
+      child: Row(
+        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: YoutubeVideo()
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text('Machinary',
+                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
+                Text('When you are looking to buy high-\nquality seed,'
+                    'there are many reasons \nwhy you should choose Pland.Farm',style: TextStyle(fontSize: 10),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Image(image:AssetImage("images/icon3.jpeg",),height: 20,width: 20,),
+                    SizedBox(width: 10, ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Support Local",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),),
+                        Text( "Buy Local. Sell Local. Support your \nlocal community of growers and farmers ",style: TextStyle(fontSize: 8),),
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Image(image:AssetImage("images/icon2.jpeg",),height: 20,width: 20,),
+                    SizedBox(width: 10, ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Verified Sellers",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),),
+                        Text( "Access a large and growing community \nof verified sellers in your region",style: TextStyle(fontSize: 8),),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Video1 extends StatefulWidget {
+  @override
+  _Video1State createState() => _Video1State();
+}
+
+class _Video1State extends State<Video1> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.blue[100],
+      padding: EdgeInsets.symmetric(horizontal: 2),
+      height: 180,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text('Best Farming techniques',
+                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Image(image:AssetImage("images/icon1.jpeg",),height: 20,width: 20,),
+                    SizedBox(width: 10, ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Register",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),),
+                        Text( "Register as a user by providing essential\n information we need to verify you",style: TextStyle(fontSize: 8),),
+                      ],
+                    ),
+                  ],
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Image(image:AssetImage("images/icon.jpeg",),height: 20,width: 20,),
+                    SizedBox(width: 10, ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Discuss",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),),
+                        Text( "Chat with the our experts to discuss the\n farming tips and techniques.",style: TextStyle(fontSize: 8),),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: YoutubeVideo()
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TrendingItem extends StatefulWidget {
+  @override
+  _TrendingItemState createState() => _TrendingItemState();
+}
+
+class _TrendingItemState extends State<TrendingItem> {
+  @override
+  Widget build(BuildContext context) {
+         return  InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => LoginScreen()));
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context){
+                          return AlertDialog(
+                            title: Text("Alert"),
+                            content: Text('Please SignIN'),
+                            actions: [
+                              FlatButton(
+                                  onPressed:() {
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                        builder: (context) => LoginScreen()));
+                                  },
+                                  child:  Text("login")),
+                            ],
+                          );
+                        }
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child:Wrap(
+                      spacing: 4.0,
+                      runSpacing: 10.0,
+                      children: [
+                        Image.asset("images/pexels4.jpg", width:180,height: 160,fit: BoxFit.cover,),
+                        Image.asset("images/pexels2.jpg",width: 180,height: 160,fit:BoxFit.cover),
+                        SizedBox( height:getProportionateScreenWidth(15),),
+                        Text('New Equipments',style: TextStyle(fontSize: 15,fontWeight: FontWeight.w300),),
+                        SizedBox(width: getProportionateScreenWidth(60)),
+                        Text('Trailors',style: TextStyle(fontSize: 15,fontWeight: FontWeight.w300),),
+                        SizedBox( height:getProportionateScreenWidth(15),),
+                        Image.asset("images/pexels1.jpg", width:180,height: 160,fit:BoxFit.cover),
+                        Image.asset("images/fertilizer.jpg",width:180,height: 160,fit:BoxFit.cover),
+                        SizedBox( height:getProportionateScreenWidth(15),),
+                        Text('Seeds',style: TextStyle(fontSize: 15,fontWeight: FontWeight.w300),),
+                        SizedBox(width: getProportionateScreenWidth(129)),
+                        Text('Fertilizer',style: TextStyle(fontSize: 15,fontWeight: FontWeight.w300),),
+                      ],
+                    ),
+                  ),
+                );
+  }
+}
+
+class LoadMore extends StatefulWidget {
+  @override
+  _LoadMoreState createState() => _LoadMoreState();
+}
+
+class _LoadMoreState extends State<LoadMore> {
+  @override
+  Widget build(BuildContext context) {
+   return InkWell(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) =>OpeningLandingPage()));
+      },
+      child: Container(
+          width: 190,
+          padding: EdgeInsets.symmetric(vertical: 10,),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [Color(0xFFFCE4EC), Color(0xFFFCE4EC),]
+              )
+          ),
+          child: Text(
+            'Load More',
+            style: TextStyle(
+              fontSize: 20, fontWeight: FontWeight.bold,),
+          ),
+        ),
+    );
+ }
+}
