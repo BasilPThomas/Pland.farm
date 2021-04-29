@@ -192,7 +192,7 @@ class _HomePageState extends State<HomePage> {
               ),
               SizedBox( height:getProportionateScreenWidth(10),),
               SearchBar(),
-              SizedBox( height:getProportionateScreenWidth(10),),
+              SizedBox( height:getProportionateScreenWidth(5),),
               RoundImage(),
               RentEquipment(),
               JohnDeere(),
