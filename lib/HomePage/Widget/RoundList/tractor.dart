@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutte_app/size_config.dart';
-class CategoriesPage extends StatefulWidget {
+
+class TractorPage extends StatefulWidget {
   @override
-  _CategoriesPageState createState() => _CategoriesPageState();
+  _TractorPageState createState() => _TractorPageState();
 }
 
-class _CategoriesPageState extends State<CategoriesPage> {
+class _TractorPageState extends State<TractorPage> {
 
   String dropdownValue = 'Tractor';
   String selectedItem = 'Tractor';

@@ -16,7 +16,9 @@ class YoutubeVideoState extends State<YoutubeVideo> {
   void initState() {
     super.initState();
     _controller = VideoPlayerController.network(
-      'https://youtu.be/wb1Tl96mCZU',
+      'https://youtu.be/wb1Tl96mCZU'
+          // 'https://www.linkedin.com/posts/world-economic-forum_agriculture-is-embracing-robotics-learn-activity-6793579843800879104-OI29'
+      ,
       youtubeVideoQuality: VideoQuality.high4320,
     );
 

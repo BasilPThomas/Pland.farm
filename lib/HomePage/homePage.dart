@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutte_app/RegistrationAndLanding/Screens/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutte_app/HomePage/Widget/appBarLogo.dart';
-import 'package:flutte_app/HomePage/Widget/circleimage.dart';
+import 'package:flutte_app/HomePage/Widget/RoundList/roundList.dart';
 import 'package:flutte_app/weatherPage/weatherPage.dart';
 import 'package:flutte_app/HomePage/Widget/searchBar.dart';
 import 'package:flutte_app/HomePage/Widget/rentEquipment.dart';
@@ -15,28 +15,28 @@ import 'package:flutte_app/size_config.dart';
 
 
 class HomePage extends StatefulWidget {
-  HomePage({this.locationWeather});
-  final locationWeather;
+  // HomePage({this.locationWeather});
+  // final locationWeather;
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  double temperature;
-  String cityName;
-  String description;
-  @override
-  void initState() {
-    super.initState();
-    updateUI(widget.locationWeather);
-    // print(widget.locationWeather);
-  }
-
-  void updateUI(dynamic weatherData) {
-    temperature = weatherData['main']['temp'];
-    cityName = weatherData['name'];
-    description = weatherData['weather'][0]['description'];
-  }
+  // double temperature;
+  // String cityName;
+  // String description;
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   updateUI(widget.locationWeather);
+  //   // print(widget.locationWeather);
+  // }
+  //
+  // void updateUI(dynamic weatherData) {
+  //   temperature = weatherData['main']['temp'];
+  //   cityName = weatherData['name'];
+  //   description = weatherData['weather'][0]['description'];
+  // }
 
   Widget _widgetForDrawer() {
     return Container(
@@ -159,41 +159,41 @@ class _HomePageState extends State<HomePage> {
             children: [
               LogoAndBar(),
               SizedBox( height:getProportionateScreenWidth(10),),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Hey , Farmer Name',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20),),
-                    GestureDetector(
-                      onTap:  () {
-                        Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => WeatherPage()));
-                      },
-                      child: Container(
-                        height:50,
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              '$temperature°c',
-                              style:TextStyle(fontSize: 20),
-                            ),
-                            Text(
-                              '$description',
-                              style:TextStyle(fontSize: 10),),
-                            Text("$cityName,india"
-                              , style: TextStyle(fontSize: 10, fontWeight: FontWeight
-                                  .w500,),),
-                          ],
-                        ),
-                      ),)
-                  ],
-                ),
-              ),
+              // Container(
+              //   padding: EdgeInsets.symmetric(horizontal: 10),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Text('Hey , Farmer Name',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20),),
+              //       GestureDetector(
+              //         onTap:  () {
+              //           Navigator.push(
+              //               context, MaterialPageRoute(builder: (context) => WeatherPage()));
+              //         },
+              //         child: Container(
+              //           height:50,
+              //           child: Column(
+              //             children: <Widget>[
+              //               Text(
+              //                 '$temperature°c',
+              //                 style:TextStyle(fontSize: 20),
+              //               ),
+              //               Text(
+              //                 '$description',
+              //                 style:TextStyle(fontSize: 10),),
+              //               Text("$cityName,india"
+              //                 , style: TextStyle(fontSize: 10, fontWeight: FontWeight
+              //                     .w500,),),
+              //             ],
+              //           ),
+              //         ),)
+              //     ],
+              //   ),
+              // ),
               SizedBox( height:getProportionateScreenWidth(10),),
               SearchBar(),
               SizedBox( height:getProportionateScreenWidth(5),),
-              RoundImage(),
+              RoundList(),
               RentEquipment(),
               JohnDeere(),
               FourWidget(),

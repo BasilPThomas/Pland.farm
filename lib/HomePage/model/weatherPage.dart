@@ -35,7 +35,7 @@ class _WeatherPageState extends State<WeatherPage> {
     var weatherData = await network.getData();
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return HomePage(locationWeather: weatherData,)
+      // return HomePage(locationWeather: weatherData,)
       ;
     }));
   }

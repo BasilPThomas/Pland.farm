@@ -1,3 +1,4 @@
+import 'package:flutte_app/HomePage/homePage.dart';
 import 'package:flutte_app/RegistrationAndLanding/Screens/signupPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +88,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     InkWell(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => OTPScreen(_controller.text)));
+                            builder: (context) =>
+                                OTPScreen(_controller.text)
+                          // HomePage()
+                        ));
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(vertical: 10),

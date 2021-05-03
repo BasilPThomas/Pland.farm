@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutte_app/RegistrationAndLanding/models/weatherPage.dart';
+// import 'package:flutte_app/weatherPage/weatherPage.dart';
+import 'package:flutte_app/productPage.dart';
 import 'package:flutter/material.dart';
+import 'HomePage/homePage.dart';
 // import 'RegistrationAndLanding/Screens/landingPage.dart';
 // import 'RegistrationAndLanding/login.dart';
 // import 'package:flutte_app/HomePage/homePage.dart';
@@ -22,9 +25,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return OpeningLandingPage();
-    return WeatherPage();
+    // return WeatherPage();
+    // return ProductPage();
     // return LoginScreen();
-    // return HomePage();
+    return HomePage();
     // return MyAppSe();
   }
 }

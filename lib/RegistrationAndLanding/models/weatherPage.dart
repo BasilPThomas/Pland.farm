@@ -34,9 +34,9 @@ class _WeatherPageState extends State<WeatherPage> {
 
     var weatherData = await network.getData();
 
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return OpeningLandingPage(locationWeather: weatherData,);
-    }));
+    // Navigator.push(context, MaterialPageRoute(builder: (context) {
+    //   return OpeningLandingPage(locationWeather: weatherData,);
+    // }));
   }
   @override
   Widget build(BuildContext context) {
