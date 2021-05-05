@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MSPPage extends StatefulWidget {
@@ -5,7 +6,11 @@ class MSPPage extends StatefulWidget {
   _MSPPageState createState() => _MSPPageState();
 }
 
+enum TimeWidget { Date,Month,Year }
+
 class _MSPPageState extends State<MSPPage> {
+  TimeWidget _timeWidget = TimeWidget.Date;
+
   String selectedItemCrop = 'Select Crop';
   final List<String> itemsCrop = <String> [
     'Select Crop' ,'Wheat', 'Rice', 'Tomato', 'Potato'];
@@ -78,121 +83,186 @@ class _MSPPageState extends State<MSPPage> {
         ),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Wrap(
-            // spacing: 5,
-            // runSpacing: 9,
-            children: [
-              Container(
-                height: 38,
-                width: 90,
-                decoration: BoxDecoration(
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                        color: Colors.black38,
-                        offset: Offset(1, 2),
-                        blurRadius: 1,
-                        spreadRadius: 1)
-                  ],
-                  gradient: LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [Color(0xFF00E676),  Color(0xFF00E676)]
+          Container(
+            padding: EdgeInsets.only(left: 10,right: 10),
+            child: Wrap(
+              spacing: 10,
+              runSpacing: 15,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 10,right: 10),
+                  height: 45,
+                  width: 180,
+                  decoration: BoxDecoration(
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                          color: Colors.black38,
+                          offset: Offset(1, 2),
+                          blurRadius: 1,
+                          spreadRadius: 1)
+                    ],
+                    gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [Color(0xFF00E676),  Color(0xFF00E676)]
+                    ),
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(30.0),
                   ),
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child:  DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                    iconSize: 0.0,
-                    value: selectedItemCrop,
-                    focusColor: Colors.pink[900],
-                    iconEnabledColor: Colors.black,
-                    onChanged: (String string) => setState(() => selectedItemCrop = string),
-                    selectedItemBuilder: (BuildContext context) {
-                      return itemsCrop.map<Widget>((String item) {
-                        return Center(child: Text('$item',style: TextStyle(fontSize: 16)));
-                      }).toList();
-                    },
-                    items: itemsCrop.map((String item) {
-                      return DropdownMenuItem<String>(
-                        child: Center(child: Text('$item',style: TextStyle(fontSize: 16))),
-                        value: item,
-                      );
-                    }).toList(),
-                  ),
-                ),
-              ),
-              Container(
-                height: 38,
-                width: 120,
-                decoration: BoxDecoration(
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                        color: Colors.black38,
-                        offset: Offset(1, 2),
-                        blurRadius: 1,
-                        spreadRadius: 1)
-                  ],
-                  gradient: LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [Color(0xFF00E676),  Color(0xFF00E676)]
-                  ),
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                // padding: EdgeInsets.only(left: 30.0,right: 30,top: 2,bottom: 2),
-                child:  DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                    iconSize: 0.0,
-                    value: selectedItemLocation,
-                    focusColor: Colors.pink[900],
-                    iconEnabledColor: Colors.black,
-                    onChanged: (String string) => setState(() => selectedItemLocation = string),
-                    selectedItemBuilder: (BuildContext context) {
-                      return itemsLocation.map<Widget>((String item) {
-                        return Center(child: Text('$item',style: TextStyle(fontSize: 16)));
-                      }).toList();
-                    },
-                    items: itemsLocation.map((String item) {
-                      return DropdownMenuItem<String>(
-                        child: Center(child: Text('$item',style: TextStyle(fontSize: 16))),
-                        value: item,
-                      );
-                    }).toList(),
+                  child:  DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      iconSize: 30.0,
+                      value: selectedItemCrop,
+                      focusColor: Colors.pink[900],
+                      iconEnabledColor: Colors.black,
+                      onChanged: (String string) => setState(() => selectedItemCrop = string),
+                      selectedItemBuilder: (BuildContext context) {
+                        return itemsCrop.map<Widget>((String item) {
+                          return Center(child: Text('$item',style: TextStyle(fontSize: 16)));
+                        }).toList();
+                      },
+                      items: itemsCrop.map((String item) {
+                        return DropdownMenuItem<String>(
+                          child: Center(child: Text('$item',style: TextStyle(fontSize: 16))),
+                          value: item,
+                        );
+                      }).toList(),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(width: 80,),
-              // Container(
-              //   height: 40,
-              //   width: 350,
-              //   decoration: BoxDecoration(
-              //     boxShadow: <BoxShadow>[
-              //       BoxShadow(
-              //           color: Colors.black38,
-              //           offset: Offset(1, 2),
-              //           blurRadius: 1,
-              //           spreadRadius: 1)
-              //     ],
-              //     gradient: LinearGradient(
-              //         begin: Alignment.centerLeft,
-              //         end: Alignment.centerRight,
-              //         colors: [Color(0xfff3f3f4),  Color(0xfff3f3f4)]
-              //     ),
-              //     border: Border.all(color: Colors.black),
-              //     // borderRadius: BorderRadius.circular(10.0),
-              //   ),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //     children: [
-              //       Icon(Icons.search),
-              //       Center(child: Text('Search')),
-              //     ],
-              //   ),
-              // )
-            ],
+                Container(
+                  padding: EdgeInsets.only(left: 10,right: 10),
+                  height: 45,
+                  width: 180,
+                  decoration: BoxDecoration(
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                          color: Colors.black38,
+                          offset: Offset(1, 2),
+                          blurRadius: 1,
+                          spreadRadius: 1)
+                    ],
+                    gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [Color(0xFF00E676),  Color(0xFF00E676)]
+                    ),
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  child:  DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      iconSize: 30.0,
+                      value: selectedItemLocation,
+                      focusColor: Colors.pink[900],
+                      iconEnabledColor: Colors.black,
+                      onChanged: (String string) => setState(() => selectedItemLocation = string),
+                      selectedItemBuilder: (BuildContext context) {
+                        return itemsLocation.map<Widget>((String item) {
+                          return Center(child: Text('$item',style: TextStyle(fontSize: 16)));
+                        }).toList();
+                      },
+                      items: itemsLocation.map((String item) {
+                        return DropdownMenuItem<String>(
+                          child: Center(child: Text('$item',style: TextStyle(fontSize: 16))),
+                          value: item,
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ),
+                Container(
+                    // height: 45,
+                    width: 250,
+                    decoration: BoxDecoration(
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                            color: Colors.black38,
+                            offset: Offset(1, 2),
+                            blurRadius: 1,
+                            spreadRadius: 1)
+                      ],
+                      gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [Color(0xFF00E676),  Color(0xFF00E676)]
+                      ),
+                      border: Border.all(color: Colors.black),
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  child:Column(
+                    children: <Widget>[
+                      ListTile(
+                        title: const Text('Date'),
+                        leading: Radio(
+                          value: TimeWidget.Date,
+                          groupValue: _timeWidget,
+                          onChanged: (TimeWidget value) {
+                            setState(() {
+                              _timeWidget = value;
+                            });
+                          },
+                        ),
+                      ),
+                      ListTile(
+                        title: const Text('Month'),
+                        leading: Radio(
+                          value: TimeWidget.Month,
+                          groupValue: _timeWidget,
+                          onChanged: (TimeWidget value) {
+                            setState(() {
+                              _timeWidget = value;
+                            });
+                          },
+                        ),
+                      ),
+                      ListTile(
+                        title: const Text('Year'),
+                        leading: Radio(
+                          value: TimeWidget.Year,
+                          groupValue: _timeWidget,
+                          onChanged: (TimeWidget value) {
+                            setState(() {
+                              _timeWidget = value;
+                            });
+                          },
+                        ),
+                      ),
+                    ],
+                  )
+                ),
+                SizedBox(width: 80,),
+                Container(
+                  height: 38,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                          color: Colors.black38,
+                          offset: Offset(1, 2),
+                          blurRadius: 1,
+                          spreadRadius: 1)
+                    ],
+                    gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [Color(0xFF00E676),  Color(0xFF00E676)]
+                    ),
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Center(child: Text('Search')),
+                      Icon(Icons.search),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ],
       ),

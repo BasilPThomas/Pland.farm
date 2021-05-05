@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutte_app/HomePage/Widget/RoundList/seedPage.dart';
 import 'package:flutte_app/HomePage/Widget/RoundList/mspPage.dart';
 import 'package:flutte_app/HomePage/Widget/RoundList/tractor.dart';
 
@@ -17,7 +18,7 @@ class RoundList extends StatelessWidget {
               InkWell(
                 onTap: (){
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => TractorPage()));
+                      builder: (context) => SeedPage()));
                 },
                 child: Column(
                   children: [
